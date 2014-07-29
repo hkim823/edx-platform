@@ -160,7 +160,8 @@ class SplitTestModuleStudioTest(SplitTestModuleTest):
     Unit tests for how split test interacts with Studio.
     """
 
-    def test_render_author_view(self):
+    @patch('xmodule.split_test_module.SplitTestDescriptor.group_configuration_url', return_value='http://example.com')
+    def test_render_author_view(self, group_configuration_url):
         """
         Test the rendering of the Studio author view.
         """
