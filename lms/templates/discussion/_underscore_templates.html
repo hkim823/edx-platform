@@ -32,7 +32,7 @@
 
 <script aria-hidden="true" type="text/template" id="thread-show-template">
   <div class="discussion-post">
-      <header>
+      <header class="post-header">
       ${"<% if (obj.group_id) { %>"}
       <div class="group-visibility-label">${"<%- obj.group_string%>"}</div>
               ${"<% }  %>"}
@@ -51,42 +51,47 @@
               </span>
           </p>
       </header>
-      <ul class="post-actions">
-        <li class-"action-item">
+      <ul class="post-actions-list">
+        <li class="actions-item action-primary">
           <a href="#" class="vote-btn" role="button" aria-pressed="false"><!-- DiscussionContentView.renderVote populates this --></a>
         </li>
-        <li class-"action-item">
-          <a href="javascript:void(0)" class="dogear action-follow" data-tooltip="${_('follow') | h}" role="checkbox" aria-checked="false">Follow (temporary text)
+        <li class="actions-item action-primary">
+          <a href="javascript:void(0)" class="dogear action-follow" data-tooltip="${_('follow') | h}" role="checkbox" aria-checked="false">Follow
             <span class="sr">${_("Follow this post")}</span>
           </a>
         </li>
-        <li class-"action-item">
-          <div class="discussion-flag-abuse notflagged" data-role="thread-flag" role="button" aria-pressed="false" tabindex="0">
-            <i class="icon icon-flag"></i><span class="flag-label">${_("Report Misuse")}</span>
-          </div>
-        </li>
-        % if course and has_permission(user, 'openclose_thread', course.id):
-        <li class-"action-item">
-          <div class="admin-pin discussion-pin notpinned" role="button" aria-pressed="false" tabindex="0">
-          <i class="icon icon-pushpin"></i><span class="pin-label">${_("Pin Thread")}</span></div>
-        </li>
-        %else:
-        ${"<% if (pinned) { %>"}
-        <li class-"action-item">
-          <div class="discussion-pin notpinned">
-            <i class="icon icon-pushpin"></i><span class="pin-label">${_("Pinned")}</span>
-          </div>
-        </li>
-        ${"<% }  %>"}
-        % endif
-        <li class-"action-item" style="display: none">
-          <a class="action-edit" href="javascript:void(0)"><span class="edit-icon"></span> ${_("Edit")}</a>
-        </li>
-        <li class-"action-item" style="display: none">
-          <a class="action-delete" href="javascript:void(0)"><span class="delete-icon"></span> ${_("Delete")}</a>
-        </li>
-        <li class-"action-item" style="display: none">
-          <a class="action-openclose" href="javascript:void(0)"><span class="edit-icon"></span> ${_("Close")}</a>
+        <li class="actions-item">
+          <a>More</a>
+          <ul class="post-actions-dropdown">
+            <li class="actions-item action-secondary">
+              <div class="discussion-flag-abuse notflagged" data-role="thread-flag" role="button" aria-pressed="false" tabindex="0">
+                <i class="icon icon-flag"></i><span class="flag-label">${_("Report Misuse")}</span>
+              </div>
+            </li>
+            % if course and has_permission(user, 'openclose_thread', course.id):
+            <li class="actions-item action-secondary">
+              <div class="admin-pin discussion-pin notpinned" role="button" aria-pressed="false" tabindex="0">
+              <i class="icon icon-pushpin"></i><span class="pin-label">${_("Pin Thread")}</span></div>
+            </li>
+            %else:
+            ${"<% if (pinned) { %>"}
+            <li class="actions-item action-secondary">
+              <div class="discussion-pin notpinned">
+                <i class="icon icon-pushpin"></i><span class="pin-label">${_("Pinned")}</span>
+              </div>
+            </li>
+            ${"<% }  %>"}
+            % endif
+            <li class="actions-item action-secondary" style="display: none">
+              <a class="action-edit" href="javascript:void(0)"><span class="edit-icon"></span> ${_("Edit")}</a>
+            </li>
+            <li class="actions-item action-secondary" style="display: none">
+              <a class="action-delete" href="javascript:void(0)"><span class="delete-icon"></span> ${_("Delete")}</a>
+            </li>
+            <li class="actions-item action-secondary" style="display: none">
+              <a class="action-openclose" href="javascript:void(0)"><span class="edit-icon"></span> ${_("Close")}</a>
+            </li>
+          </ul>
         </li>
       </ul>
 
@@ -142,9 +147,7 @@
 </script>
 
 <script aria-hidden="true" type="text/template" id="thread-response-show-template">
-    <header class="response-local">
-        <a href="#" class="vote-btn" role="button" aria-pressed="false"><!-- DiscussionContentView.renderVote() populates this --></a>
-        <a href="javascript:void(0)" class="endorse-btn action-endorse" style="cursor: default; display: none;" data-tooltip="${_('endorse') | h}"><span class="check-icon" style="pointer-events: none; "></span></a>
+    <header class="response-header response-local">
         ${"<% if (obj.username) { %>"}
         <a href="${'<%- user_url %>'}" class="posted-by">${'<%- username %>'}</a>
         ${"<% } else { %>"}
@@ -152,15 +155,32 @@
         ${"<% } %>"}
         <p class="posted-details" title="${'<%- created_at %>'}">${'<%- created_at %>'}</p>
     </header>
+      <ul class="response-actions-list">
+        <li class="actions-item action-primary">
+          <a href="#" class="vote-btn" role="button" aria-pressed="false"><!-- DiscussionContentView.renderVote() populates this --></a>
+        </li>
+        <li class="actions-item action-primary">
+          <a href="javascript:void(0)" class="endorse-btn action-endorse" style="cursor: default; display: none;" data-tooltip="${_('endorse') | h}"><span class="check-icon" style="pointer-events: none; "></span></a>
+        </li>
+        <li class="actions-item">
+          <a>More</a>
+          <ul class="response-actions-dropdown">
+            <li class="actions-item action-secondary">
+              <!--report flag -->
+            </li>
+            <li class="actions-item action-secondary">
+              <!-- pinned with persmissions wrapper conditional-->
+            </li>
+            <li class="actions-item action-secondary" style="display: none">
+              <a class="action-edit" href="javascript:void(0)"><span class="edit-icon"></span> ${_("Edit")}</a>
+            </li>
+            <li class="actions-item action-secondary" style="display: none">
+              <a class="action-delete" href="javascript:void(0)"><span class="delete-icon"></span> ${_("Delete")}</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
     <div class="response-local"><div class="response-body">${"<%- body %>"}</div>
-    <div class="discussion-flag-abuse notflagged" data-role="thread-flag" role="button" aria-pressed="false" tabindex="0">
-      <i class="icon icon-flag"></i><span class="flag-label">${_("Report Misuse")}</span></div>
-    </div>
-    <ul class="moderator-actions response-local">
-        <li style="display: none"><a class="action-edit" href="javascript:void(0)"><span class="edit-icon"></span> ${_("Edit")}</a></li>
-        <li style="display: none"><a class="action-delete" href="javascript:void(0)"><span class="delete-icon"></span> ${_("Delete")}</a></li>
-        <li style="display: none"><a class="action-openclose" href="javascript:void(0)"><span class="edit-icon"></span> ${_("Close")}</a></li>
-    </ul>
 </script>
 
 <script aria-hidden="true" type="text/template" id="thread-response-edit-template">
@@ -178,30 +198,49 @@
 <script aria-hidden="true" type="text/template" id="response-comment-show-template">
   <div id="comment_${'<%- id %>'}">
     <div class="response-body">${'<%- body %>'}</div>
-    <div class="discussion-flag-abuse notflagged" data-role="thread-flag" data-tooltip="${_('Report Misuse') | h}" role="button" aria-pressed="false" tabindex="0">
-      <i class="icon icon-flag"></i><span class="sr flag-label">${_("Report Misuse")}</span></div>
-    <div style="display: none" class="discussion-delete-comment action-delete" data-tooltip="${_('Delete Comment') | h}" role="button" tabindex="0">
-      <i class="icon icon-remove"></i><span class="sr">${_("Delete Comment")}</span></div>
-    <div class="discussion-edit-comment action-edit" data-tooltip="${_('Edit') | h}" role="button" tabindex="0">
-      <i class="icon icon-pencil"></i><span class="sr">${_("Edit")}</span></div>
-      <%
-      js_block = u"""
-        interpolate(
-          '{}',
-          {{'time_ago': '<span class=\"timeago\" title=\"' + created_at + '\">' + created_at + '</span>'}},
-          true
-          )""".format(
-                 ## Translators: 'timeago' is a placeholder for a fuzzy, relative timestamp (see: https://github.com/rmm5t/jquery-timeago)
-                 escapejs(_('-posted %(time_ago)s by'))
-               )
-             %>
-      <p class="posted-details">
-      ${'<%='}${js_block}${'%>'}
-      ${"<% if (obj.username) { %>"}
-      <a href="${'<%- user_url %>'}" class="profile-link">${'<%- username %>'}</a>
-      ${"<% } else { %>"}
-      ${_('anonymous')}
-      ${"<% } %>"}
+    <ul class="comment-actions-list">
+      <li class="actions-item">
+        More
+        <ul class="comment-actions-dropdown">
+          <li class="actions-item action-secondary">
+            <div class="discussion-flag-abuse notflagged" data-role="thread-flag" data-tooltip="${_('Report Misuse') | h}" role="button" aria-pressed="false" tabindex="0">
+                <i class="icon icon-flag"></i>
+                <span class="sr flag-label">${_("Report Misuse")}</span>
+              </div>
+          </li>
+          <li class="actions-item action-secondary">
+            <div style="display: none" class="discussion-delete-comment action-delete" data-tooltip="${_('Delete Comment') | h}" role="button" tabindex="0">
+              <i class="icon icon-remove"></i>
+              <span class="sr">${_("Delete Comment")}</span>
+            </div>
+          </li>
+          <li class="actions-item action-secondary">
+            <div class="discussion-edit-comment action-edit" data-tooltip="${_('Edit') | h}" role="button" tabindex="0">
+              <i class="icon icon-pencil"></i>
+              <span class="sr">${_("Edit")}</span>
+            </div>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <%
+    js_block = u"""
+      interpolate(
+        '{}',
+        {{'time_ago': '<span class=\"timeago\" title=\"' + created_at + '\">' + created_at + '</span>'}},
+        true
+        )""".format(
+               ## Translators: 'timeago' is a placeholder for a fuzzy, relative timestamp (see: https://github.com/rmm5t/jquery-timeago)
+               escapejs(_('posted %(time_ago)s by'))
+             )
+           %>
+    <p class="posted-details">
+    ${'<%='}${js_block}${'%>'}
+    ${"<% if (obj.username) { %>"}
+    <a href="${'<%- user_url %>'}" class="profile-link">${'<%- username %>'}</a>
+    ${"<% } else { %>"}
+    ${_('anonymous')}
+    ${"<% } %>"}
     </p>
   </div>
 </script>

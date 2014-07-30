@@ -1,6 +1,47 @@
 // discussion - elements - actions
 // ====================
 
+// UI: general action list styling
+.post-actions-list, .response-actions-list, .comment-actions-list {
+  @extend %ui-no-list;
+  text-align: right;
+
+  .actions-item {
+    display: inline-block;
+    text-align: center;
+    height: 60px;
+    width: 60px;
+    vertical-align: top;
+
+    &.action-primary {
+
+    }
+  }
+}
+
+// CASE: comment actions styling
+.comment-actions-list .actions-item {
+  height: auto;
+}
+
+// ====================
+
+// UI: general actions dropdown styling
+.post-actions-dropdown, .response-actions-dropdown, .comment-actions-dropdown {
+  @extend %ui-no-list;
+  display: none; //temporary
+
+  .actions-item.action-secondary {
+    display: inline-block;
+
+  }
+}
+
+// ====================
+
+// TO-DO refactor all styling below this actions line. 
+
+
 // vote and endorse buttons
 .container .discussion-body {
 
@@ -25,20 +66,6 @@
       text-indent: -9999px;
       color: #17b429;
       overflow: hidden;
-    }
-
-    &.is-cast {
-      border-color: #379a42;
-      @include linear-gradient(top, #50cc5e, #3db84b);
-      color: $white;
-      text-shadow: 0 1px 0 rgba(0, 0, 0, .3);
-      box-shadow: 0 1px 0 rgba(255, 255, 255, .4) inset, 0 1px 2px $shadow;
-
-      .plus-icon {
-        background-position: 0 -10px;
-        color: #336a39;
-        text-shadow: 0 1px 0 rgba(255, 255, 255, .4);
-      }
     }
   }
 
@@ -201,24 +228,5 @@
 .discussion-article {
 
   .dogear {
-      display: block;
-      width: 52px;
-      height: 51px;
-      background: url(../images/follow-dog-ear.png) 0 -52px no-repeat;
-      @include transition(none);
     }
-}
-
-// CASE: inline styling
-// currently we hide the follow dogear for inline discussions 
-.discussion-thread {
-  .dogear {
-    display: none;
-  }
-
-  &.expanded {
-    .dogear{
-      display: block;
-    }
-  }
 }
