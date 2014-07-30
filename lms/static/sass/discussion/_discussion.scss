@@ -1,13 +1,13 @@
 // discussion - main app styling
 // ====================
-// TO-DO: determine whether these new top level styles should be moved to a general layouts partial
+// TO-DO: determine whether these new top level styles should be moved to a general threads view file
 
-// UI: general discussion styling
+// ====================
 
+// general thread layout
+body.discussion, .discussion-module {
 
-body.discussion {
-
-  // UI: post layout
+  // post layout
   .discussion-post {
     padding: ($baseline*2) ($baseline*2) $baseline ($baseline*2);
     border-radius: 3px 3px 0 0;
@@ -27,11 +27,10 @@ body.discussion {
     }
 
     .post-body {
-
     }
   }
 
-  // UI: response layout
+  // response layout
   .discussion-response {
 
     .response-header {
@@ -46,7 +45,7 @@ body.discussion {
     }
   }
 
-  // UI: comments layout
+  // comments layout
   .comments {
     @extend %ui-no-list;
     border-radius: 0 0 3px 3px;
@@ -83,12 +82,19 @@ body.discussion {
       vertical-align: top;
     }
 
-    //TO-DO : clean up posted-details styling, currently reused by responses and comments 
+    //TO-DO : clean up posted-details styling, currently reused by responses and comments
     .posted-details {
       margin-top: 0;
     }
-
+  }
 }
+
+
+// UI: primary post area
+
+// UI: responses
+
+// UI: comments
 
 
 // TO-DO: clean up styles below this list, expect to treat these styles as an extension of shame.scss for the time being.
@@ -144,7 +150,7 @@ body.discussion {
     min-height: 500px;
     border: 1px solid #aaa;
     border-radius: 3px;
-    background: $white;
+    background: $gray-l6;
     box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
   }
 
@@ -225,7 +231,7 @@ body.discussion {
       @include animation(fadeIn .3s);
       position: relative;
       margin: 0 -10px 30px;
-      border: 1px solid #b2b2b2;
+      border: 1px solid #cccccc;
       border-radius: 3px;
       box-shadow: 0 0 1px $shadow;
 
@@ -286,6 +292,7 @@ body.discussion {
       padding: $baseline $baseline 0;
       background-color: $white;
     }
+
     .posted-by {
       font-weight: 700;
     }
@@ -319,21 +326,20 @@ body.discussion {
     font-size: 14px;
   }
 
-    .posted-details {
-      font-size: 11px;
-    }
+  .posted-details {
+    font-size: 11px;
+  }
 
-    .staff-label {
-      margin-left: ($baseline/10);
-      padding: 0 ($baseline/5);
-      border-radius: 2px;
-      background: #009FE2;
-      font-size: 9px;
-      font-weight: 700;
-      font-style: normal;
-      color: white;
-      text-transform: uppercase;
-    }
+  .staff-label {
+    margin-left: ($baseline/10);
+    padding: 0 ($baseline/5);
+    border-radius: 2px;
+    background: #009FE2;
+    font-size: 9px;
+    font-weight: 700;
+    font-style: normal;
+    color: white;
+    text-transform: uppercase;
   }
 
   .community-ta-label{
@@ -347,7 +353,6 @@ body.discussion {
     color: white;
     text-transform: uppercase;
   }
-
 
   .main-article.new {
     display: none;

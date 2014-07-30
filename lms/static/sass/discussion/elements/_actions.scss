@@ -9,9 +9,15 @@
   .actions-item {
     display: inline-block;
     text-align: center;
-    height: 60px;
-    width: 60px;
+    height: ($baseline*2);
+    width: ($baseline*2);
     vertical-align: top;
+    padding: ($baseline/4);
+
+    &:hover {
+      box-shadow: 0 0 2px $shadow;
+      border-radius: 3px;
+    }
 
     &.action-primary {
 
@@ -39,7 +45,34 @@
 
 // ====================
 
-// TO-DO refactor all styling below this actions line. 
+// UI: general action styling
+.action-button {
+  border-radius: 3px;
+  text-align: center;
+
+  &:focus {
+
+  }
+
+  .action-icon {
+    display: block;
+    padding: ($baseline/5) 0;
+    @include font-size(16);
+    @include line-height(16);
+
+  }
+
+  .action-label {
+    @include font-size(10);
+    @include line-height(10);
+    display: block;
+    text-transform: uppercase;
+
+  }
+
+}
+
+// TO-DO refactor all styling below this actions line.
 
 
 // vote and endorse buttons
@@ -70,15 +103,6 @@
   }
 
   .endorse-btn {
-    display: block;
-    float: right;
-    width: 27px;
-    height: 27px;
-    margin-right: ($baseline/2);
-    border-radius: 27px;
-    border: 1px solid #a0a0a0;
-    @include linear-gradient(top, $white 35%, $gray-l4);
-    box-shadow: 0 1px 1px $shadow-l1;
 
     .check-icon {
       display: block;
@@ -88,145 +112,8 @@
       background: url(../images/endorse-icon.png) no-repeat;
     }
 
-    &.is-endorsed {
-      border: 1px solid #4697c1;
-      @include linear-gradient(top, #6dccf1, #38a8e5);
-      box-shadow: 0 1px 1px $shadow-l1, 0 1px 0 rgba(255, 255, 255, .4) inset;
-
-      .check-icon {
-        background-position: 0 -12px;
-      }
+    &.is-endorsed .check-icon {
+      background-position: 0 -12px;
     }
   }
-}
-
-// moderator actions
-.container .discussion-body {
-
-  .moderator-actions {
-    margin: 0;
-    padding: $baseline 0;
-    @include clearfix;
-
-    li {
-      float: left;
-      margin-right: ($baseline/2);
-      list-style: none;
-    }
-
-    a {
-      @include white-button;
-      height: 26px;
-      @include linear-gradient(top, $white 35%, #ebebeb);
-      font-size: 13px;
-      line-height: 24px;
-      color: #737373;
-      font-weight: normal;
-      box-shadow: 0 1px 1px $shadow-l1;
-
-      &:hover, &:focus {
-        @include linear-gradient(top, $white 35%, #ddd);
-      }
-
-      .delete-icon {
-        display: block;
-        float: left;
-        width: 10px;
-        height: 10px;
-        margin: 8px 4px 0 0;
-        background: url(../images/moderator-delete-icon.png) no-repeat;
-      }
-
-      .edit-icon {
-        display: block;
-        float: left;
-        width: 10px;
-        height: 10px;
-        margin: 7px 4px 0 0;
-        background: url(../images/moderator-edit-icon.png) no-repeat;
-      }
-    }
-  }
-}
-
-// ====================
-
-// post actions - pinning
-.discussion-pin {
-  font-size: 12px;
-  float: right;
-  padding-right: ($baseline/4);
-  font-style: italic;
-  margin-right: ($baseline/2);
-  opacity: 0.8;
-
-  &.admin-pin {
-    cursor: pointer;
-
-    &:hover, &:focus {
-      @include transition(opacity .2s linear 0s);
-      opacity: 1.0;
-    }
-  }
-}
-
-.discussion-pin-inline {
-  font-size: 12px;
-  float:right;
-  font-style: italic;
-  position: relative;
-  right:-20px;
-  top:-13px;
-  margin-right:35px;
-  margin-top:13px;
-  opacity: 1.0;
-}
-
-.notpinned .icon {
-  display: block;
-  float: left;
-  margin: 3px;
-  width: 10px;
-  height: 14px;
-  padding-right: 3px;
-  color: #333;
-}
-
-.pinned .icon {
-  display: block;
-  float: left;
-  margin: 3px;
-  width: 10px;
-  height: 14px;
-  padding-right: 3px;
-  color: $pink;
-}
-
-.pinned span {
-  color: $pink;
-  font-style: italic;
-}
-
-.notpinned span {
-  color: #333;
-  font-style: italic;
-}
-
-.pinned-false {
-  display:none;
-}
-
-// ====================
-
-// post actions - flagging
-.discussion-flag-abuse, .discussion-delete-comment, .discussion-edit-comment {
-}
-
-// ====================
-
-// post actions - following
-.discussion-article {
-
-  .dogear {
-    }
 }

@@ -53,23 +53,32 @@
       </header>
       <ul class="post-actions-list">
         <li class="actions-item action-primary">
-          <a href="#" class="vote-btn" role="button" aria-pressed="false"><!-- DiscussionContentView.renderVote populates this --></a>
+          <a href="#" class="action-button action-vote vote-btn" role="button" aria-pressed="false">
+            <span class="action-icon"><i class="icon icon-plus"></i></span>
+            <span class="action-label">${_("Vote")}</span>
+            <!-- DiscussionContentView.renderVote populates this --></a>
         </li>
         <li class="actions-item action-primary">
-          <a href="javascript:void(0)" class="dogear action-follow" data-tooltip="${_('follow') | h}" role="checkbox" aria-checked="false">Follow
-            <span class="sr">${_("Follow this post")}</span>
+          <a href="#" class="action-button action-follow" role="checkbox" aria-checked="false">
+            <span class="action-icon"><i class="icon icon-star"></i></span>
+            <span class="action-label">${_("Follow")}</span>
           </a>
         </li>
         <li class="actions-item">
           <a>More</a>
           <ul class="post-actions-dropdown">
             <li class="actions-item action-secondary">
-              <div class="discussion-flag-abuse notflagged" data-role="thread-flag" role="button" aria-pressed="false" tabindex="0">
-                <i class="icon icon-flag"></i><span class="flag-label">${_("Report Misuse")}</span>
-              </div>
+              <a href="#" class="action-button action-report" role="checkbox" aria-checked="false">
+                <span class="action-icon"><i class="icon icon-flag"></i></span>
+                <span class="action-label">${_("Report")}</span>
+              </a>
             </li>
             % if course and has_permission(user, 'openclose_thread', course.id):
             <li class="actions-item action-secondary">
+              <a href="#" class="action-button action-report" role="checkbox" aria-checked="false">
+                <span class="action-icon"><i class="icon icon-flag"></i></span>
+                <span class="action-label">${_("Report")}</span>
+              </a>
               <div class="admin-pin discussion-pin notpinned" role="button" aria-pressed="false" tabindex="0">
               <i class="icon icon-pushpin"></i><span class="pin-label">${_("Pin Thread")}</span></div>
             </li>
