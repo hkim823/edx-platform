@@ -608,7 +608,7 @@ class SplitTestDescriptor(SplitTestFields, SequenceDescriptor, StudioEditableDes
 
         modulestore = self.system.modulestore
 
-        for group in user_partition.groups:
+        for group in getattr(user_partition, 'groups', []):
             group_id = unicode(group.id)
             child_location = self.group_id_to_child.get(group_id, None)
             child = get_child_descriptor(child_location)

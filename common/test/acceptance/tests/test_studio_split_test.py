@@ -415,6 +415,7 @@ class GroupConfigurationsTest(ContainerBase, SplitTestMixin):
         Then I see the module has correct groups
         And I go to the Group Configuration page in Studio
         And I edit the name of the group configuration, add new group and remove old one
+        And I change the name for the group "New group" to "Second Group"
         And I go to the unit page in Studio
         And I edit the unit
         Then I see the group configuration name is changed in `Group Configuration` dropdown
@@ -447,6 +448,8 @@ class GroupConfigurationsTest(ContainerBase, SplitTestMixin):
         config = self.page.group_configurations[0]
         config.edit()
         config.name = "Second Group Configuration Name"
+        # `New group` -> `Second Group`
+        config.groups[2].name = "Second Group"
         # Add new group
         config.add_group()  # Group D
         # Remove Group A
@@ -467,12 +470,12 @@ class GroupConfigurationsTest(ContainerBase, SplitTestMixin):
             container.get_xblock_information_message()
         )
         self.verify_groups(
-            container, ['Group B', 'New group'], ['Group A'],
+            container, ['Group B', 'Second Group'], ['Group A'],
             verify_missing_groups_not_present=False
         )
         # Click the add button and verify that the groups were added on the page
         container.add_missing_groups()
-        self.verify_groups(container, ['Group B', 'New group', 'Group D'], ['Group A'])
+        self.verify_groups(container, ['Group B', 'Second Group', 'Group D'], ['Group A'])
 
     def test_can_cancel_creation_of_group_configuration(self):
         """
