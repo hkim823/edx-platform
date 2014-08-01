@@ -1,62 +1,81 @@
 // discussion - elements - actions
 // ====================
 
-// UI: general action list styling
+// UI: general action list
 .post-actions-list, .response-actions-list, .comment-actions-list {
   @extend %ui-no-list;
   text-align: right;
 
   .actions-item {
-    display: inline-block;
-    text-align: center;
-    height: ($baseline*2);
-    width: ($baseline*2);
+    @include box-sizing(border-box);
     vertical-align: top;
-    padding: ($baseline/4);
+    display: inline-block;
+    margin: 0 ($baseline/4);
 
-    &:hover {
-      box-shadow: 0 0 2px $shadow;
-      border-radius: 3px;
-    }
-
-    &.action-primary {
-
+    &.is-visible {
+      display: inline-block;
     }
   }
 }
 
-// CASE: comment actions styling
+// CASE: comment actions
 .comment-actions-list .actions-item {
   height: auto;
 }
 
 // ====================
 
-// UI: general actions dropdown styling
+// UI: general actions dropdown
 .post-actions-dropdown, .response-actions-dropdown, .comment-actions-dropdown {
   @extend %ui-no-list;
-  display: none; //temporary
+  text-align: left;
 
-  .actions-item.action-secondary {
+  &.is-collapsed {
+    display: none;
+  }
+
+  &.is-expanded {
     display: inline-block;
+    box-shadow: 0 0 2px $shadow;
+    border-radius: 3px;
+  }
 
+  .actions-item {
+    display: block;
+    margin: 0;
   }
 }
 
 // ====================
 
-// UI: general action styling
+// UI: general action
 .action-button {
+  @include box-sizing(border-box);
   border-radius: 3px;
   text-align: center;
+  padding: ($baseline/4);
+  display: inline-block;
+  height: ($baseline*2.5);
+  min-width: ($baseline*2.5);
+  width: auto;
+  text-align: center;
+
+  // STATE: hover styling
+  &:hover {
+    box-shadow: 0 0 2px $shadow;
+    border-radius: 3px;
+
+    .action-label {
+      color: $black;
+    }
+  }
 
   &:focus {
-
+    box-shadow: 0 0 3px $blue;
   }
 
   .action-icon {
     display: block;
-    padding: ($baseline/5) 0;
     @include font-size(16);
     @include line-height(16);
 
@@ -67,25 +86,93 @@
     @include line-height(10);
     display: block;
     text-transform: uppercase;
+    color: $gray-l4;
+  }
+
+  // STATE: enabled action
+  &.is-enabled {
+    box-shadow: 0 2px $shadow inset;
+
+    .action-icon, .action-label {
+      color: $white;
+    }
+
+    // CASE: follow action
+    &.action-follow {
+      background-color: $forum-color-following;
+    }
+
+    // CASE: vote action
+    &.action-vote {
+      background-color: $green;
+    }
+
+    // CASE: endorse action
+    &.action-endorse {
+      background-color: $blue;
+    }
+
+    // CASE: answer action
+    &.action-answer {
+      background-color: $green;
+    }
+  }
+
+  // CASE: more button
+  &.action-more {
+
+    .action-icon {
+      color: $gray-l4;
+    }
+
+    &:hover .action-icon {
+      color: $black;
+    }
+  }
+}
+
+// ====================
+
+// UI: secondary action
+.action-list-item {
+  margin: 0;
+  display: block;
+  padding: ($baseline/4);
+
+  &:focus {
 
   }
 
+  &:hover {
+    background-color: $gray-l4;
+  }
+  .action-icon {
+    display: inline-block;
+    width: ($baseline/2);
+    @include font-size(10);
+    @include line-height(10);
+  }
+
+  .action-label {
+    @include font-size(10);
+    @include line-height(10);
+    display: inline-block;
+    text-transform: uppercase;
+  }
 }
+
+// CASE: comment action
+.comment-actions-list .action-button.action-more {
+  height: ($baseline*1.5);
+}
+
+// ====================
 
 // TO-DO refactor all styling below this actions line.
 
 
 // vote and endorse buttons
 .container .discussion-body {
-
-  .discussion-post {
-    > header .vote-btn {
-      position: relative;
-      z-index: 100;
-      margin-top: ($baseline/4);
-      margin-left: ($baseline*2);
-    }
-  }
 
   .vote-btn {
 

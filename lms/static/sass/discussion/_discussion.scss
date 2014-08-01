@@ -24,6 +24,7 @@ body.discussion, .discussion-module {
       display: inline-block;
       width: flex-grid(4,12);
       vertical-align: top;
+      float: right;
     }
 
     .post-body {
@@ -111,8 +112,7 @@ body.discussion {
 
     .new-post-icon {
       margin: 8px 7px 0 0;
-      font-size: 16px;
-      vertical-align: middle;
+      font-size: 13px;
       color: $white;
     }
   }
@@ -289,7 +289,7 @@ body.discussion {
     .discussion-response {
       @include box-sizing(border-box);
       border-radius: 3px 3px 0 0;
-      padding: $baseline $baseline 0;
+      padding: $baseline $baseline ($baseline/2);
       background-color: $white;
     }
 
@@ -642,9 +642,8 @@ body.discussion {
     width: 16px;
     height: 17px;
     margin: 8px 7px 0 0;
-    font-size: 16px;
+    font-size: 13px;
     padding-right: $baseline/2;
-    vertical-align: middle;
     color: $white;
   }
 
