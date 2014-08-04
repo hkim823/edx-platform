@@ -150,7 +150,6 @@ body.discussion {
     min-height: 500px;
     border: 1px solid #aaa;
     border-radius: 3px;
-    background: $gray-l6;
     box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
   }
 
@@ -177,6 +176,7 @@ body.discussion {
     position: relative;
     min-height: 500px;
     background-image: url(../images/bg-texture.png);
+    background: $blue-l4;
 
     a {
       word-wrap: break-word;
@@ -246,19 +246,18 @@ body.discussion {
       }
 
       .staff-banner {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 14px;
         padding: 1px 5px;
         @include box-sizing(border-box);
-        border-radius: 2px 2px 0 0;
+        border-radius: 3px;
         background: #009fe2;
         font-size: 9px;
         font-weight: 700;
         color: $white;
         text-transform: uppercase;
+        vertical-align: top;
+        display: inline-block;
+        margin: 3px ($baseline/2);
+
       }
 
       .community-ta-banner{
@@ -298,23 +297,24 @@ body.discussion {
     }
   }
 
-  .add-response {
+  .add-response-btn {
+    display: inline-block;
     margin-top: $baseline;
-    padding: 0 ($baseline*1.5);
+    text-align: left;
+    font-size: 14px;
+    color: $link-color;
 
-    .add-response-btn {
-      @include white-button;
-      @include linear-gradient(top, $white 35%, #ebebeb);
-      position: relative;
-      border: 1px solid #b2b2b2;
-      padding: 0 18px;
-      width: 100%;
-      box-shadow: 0 1px 1px $shadow-l1;
-      text-align: left;
-      font-size: 13px;
+    &:hover {
+      cursor: pointer;
+      color: $link-hover;
+    }
 
-      span.add-response-btn-text {
-        padding-left: ($baseline/5);
+    .add-response-btn-text {
+      padding-left: ($baseline/5);
+      color: $link-color;
+
+      &:hover {
+        color :$link-hover;
       }
     }
   }
@@ -331,7 +331,7 @@ body.discussion {
   }
 
   .staff-label {
-    margin-left: ($baseline/10);
+    margin-left: ($baseline/4);
     padding: 0 ($baseline/5);
     border-radius: 2px;
     background: #009FE2;
@@ -687,6 +687,7 @@ body.discussion {
 
 // post pagination
 .response-count {
+  display: inline-block;
   margin-top: $baseline;
   padding: 0 ($baseline*1.5);
   color: $gray;

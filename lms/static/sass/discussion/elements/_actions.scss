@@ -86,7 +86,7 @@
     @include line-height(10);
     display: block;
     text-transform: uppercase;
-    color: $gray-l4;
+    color: $gray-l2 ;
   }
 
   // STATE: enabled action
@@ -122,7 +122,7 @@
   &.action-more {
 
     .action-icon {
-      color: $gray-l4;
+      color: $gray-l2;
     }
 
     &:hover .action-icon {

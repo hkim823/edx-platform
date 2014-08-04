@@ -1,12 +1,12 @@
 if Backbone?
   class @DiscussionContentView extends Backbone.View
 
-  
+
     events:
       "click .discussion-flag-abuse": "toggleFlagAbuse"
       "keydown .discussion-flag-abuse":
         (event) -> DiscussionUtil.activateOnSpace(event, @toggleFlagAbuse)
-  
+
     attrRenderer:
       endorsed: (endorsed) ->
         if endorsed
@@ -58,7 +58,7 @@ if Backbone?
         disable: -> @$(".action-delete").closest("li").hide()
       can_endorse:
         enable: ->
-          @$(".action-endorse").show().css("cursor", "auto")
+          @$(".action-endorse").show()
         disable: ->
           @$(".action-endorse").css("cursor", "default")
           if not @model.get('endorsed')
@@ -100,13 +100,13 @@ if Backbone?
 
     setWmdContent: (cls_identifier, text) =>
       DiscussionUtil.setWmdContent @$el, $.proxy(@$, @), cls_identifier, text
-      
+
 
     initialize: ->
       @initLocal()
       @model.bind('change', @renderPartialAttrs, @)
-      
-     
+
+
     toggleFollowing: (event) =>
       event.preventDefault()
       $elem = $(event.target)
@@ -128,7 +128,7 @@ if Backbone?
         @unFlagAbuse()
       else
         @flagAbuse()
-      
+
     flagAbuse: =>
       url = @model.urlFor("flagAbuse")
       DiscussionUtil.safeAjax
@@ -142,8 +142,8 @@ if Backbone?
             ###
             temp_array = _.clone(@model.get('abuse_flaggers'));
             temp_array.push(window.user.id)
-            @model.set('abuse_flaggers', temp_array)      
-       
+            @model.set('abuse_flaggers', temp_array)
+
     unFlagAbuse: =>
       url = @model.urlFor("unFlagAbuse")
       DiscussionUtil.safeAjax
@@ -158,7 +158,7 @@ if Backbone?
             if DiscussionUtil.isFlagModerator
                 temp_array = []
 
-            @model.set('abuse_flaggers', temp_array)         
+            @model.set('abuse_flaggers', temp_array)
 
     renderVote: =>
       button = @$el.find(".vote-btn")

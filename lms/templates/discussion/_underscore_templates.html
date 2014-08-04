@@ -6,12 +6,10 @@
     <article class="discussion-article" data-id="${'<%- id %>'}">
         <div class="thread-content-wrapper"></div>
         <div class="response-count"/>
-        <div class="add-response">
-            <button class="button add-response-btn">
-                <i class="icon icon-reply"></i>
-                <span class="add-response-btn-text">${_('Add A Response')}</span>
-            </button>
-        </div>
+        <a class="add-response-btn">
+          <i class="icon icon-reply"></i>
+          <span class="add-response-btn-text">${_('Add A Response')}</span>
+        </a>
         <ol class="responses"/>
         <div class="response-pagination"/>
         <div class="post-status-closed bottom-post-status" style="display: none">
@@ -204,7 +202,7 @@
             </li>
           </ul>
         </li>
-        <li class="actions-item action-primary is-visible">
+        <li class="actions-item action-primary is-visible is-enabled">
           <a href="#" class="action-button action-vote" role="button" aria-pressed="false">
             <span class="action-icon"><i class="icon icon-plus"></i></span>
             <span class="action-label">${_("Vote")}</span>

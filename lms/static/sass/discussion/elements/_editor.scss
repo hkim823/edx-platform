@@ -37,9 +37,9 @@
 }
 
 // CASE: new post inline styling
-// TO-DO: remove this entire case if we can rely on the post editing form styling from above. 
+// TO-DO: remove this entire case if we can rely on the post editing form styling from above.
 body.discussion, .discussion-module .forum-new-post-form {
-  
+
   .wmd-panel {
     width: 100%;
     min-width: 500px;
@@ -71,7 +71,7 @@ body.discussion, .discussion-module .forum-new-post-form {
     overflow: hidden;
     margin: ($baseline/2) ($baseline/4) ($baseline/4) ($baseline/4);
     padding: 0;
-    height: 30px; 
+    height: 30px;
   }
 
   .wmd-spacer {
@@ -158,7 +158,6 @@ body.discussion, .discussion-module .forum-new-post-form {
 
   .wmd-button {
     span {
-      background-image: url("/static/images/wmd-buttons.png");
       display: inline-block;
     }
   }
@@ -220,7 +219,7 @@ body.discussion {
 }
 
 // CASE: post editing form -- inline
-// TO-DO: remove this entire case if we can rely on the post editing form styling from above. 
+// TO-DO: remove this entire case if we can rely on the post editing form styling from above.
 .discussion-module {
   .edit-post-form {
     width: 100%;
@@ -279,7 +278,7 @@ body.discussion {
       font-size: 16px;
       font-weight: 700;
     }
-  } 
+  }
 }
 
 // =========================
